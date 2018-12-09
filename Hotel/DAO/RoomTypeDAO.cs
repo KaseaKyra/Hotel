@@ -63,18 +63,28 @@ namespace Hotel.DAO
             return rt;
         }
 
-        //public List<String> GetListRoomType()
-        //{
-        //    List<String> listRoomType = new List<String>();
-        //    string query = "select Name from RoomTypes";
-        //    DataTable data = DataProvider.Instace.ExecuteQuery(query);
+        public bool UpdateRoomTypeByID(int id, string name, double price)
+        {
+            string query = "exec USP_UpdateRoomTypeByID @id , @name , @price ";
+            int result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { id, name, price });
+            return result > 0;
+        }
 
-        //    foreach (DataRow item in data.Rows)
-        //    {
-        //        String type = item.ToString();
-        //        listRoomType.Add(type);
-        //    }
-        //    return listRoomType;
-        //}
+        public bool DeleteRoomType(int id)
+        {
+
+            RoomDAO.Instace.DeleteRoomByRoomTypeID(id);
+
+            string query = "exec USP_DeleteRoomTypeByID @id";
+            int result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { id });
+            return result > 0;
+        }
+
+        public bool InsertRoomType(string name, double price)
+        {
+            string query = "exec USP_InsertRoomType @name , @price ";
+            int result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { name, price });
+            return result > 0;
+        }
     }
 }

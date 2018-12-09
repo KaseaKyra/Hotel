@@ -67,8 +67,8 @@
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel23 = new System.Windows.Forms.Panel();
+            this.nudCategoryPrice = new System.Windows.Forms.NumericUpDown();
             this.lblRoomPrice = new System.Windows.Forms.Label();
-            this.txbRoomPrice = new System.Windows.Forms.TextBox();
             this.panel18 = new System.Windows.Forms.Panel();
             this.lblCategoryName = new System.Windows.Forms.Label();
             this.txbCategoryName = new System.Windows.Forms.TextBox();
@@ -108,7 +108,6 @@
             this.lblAccountDetail = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnShowAccount = new System.Windows.Forms.Button();
-            this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -124,6 +123,9 @@
             this.txbUsername = new System.Windows.Forms.TextBox();
             this.panel31 = new System.Windows.Forms.Panel();
             this.dgvAccount = new System.Windows.Forms.DataGridView();
+            this.panel26 = new System.Windows.Forms.Panel();
+            this.lblAccountID = new System.Windows.Forms.Label();
+            this.txbAccountID = new System.Windows.Forms.TextBox();
             this.tcAdmin.SuspendLayout();
             this.tpBill.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -144,6 +146,7 @@
             this.panel14.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel23.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCategoryPrice)).BeginInit();
             this.panel18.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel20.SuspendLayout();
@@ -168,6 +171,7 @@
             this.panel30.SuspendLayout();
             this.panel31.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).BeginInit();
+            this.panel26.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcAdmin
@@ -315,6 +319,7 @@
             this.btnEditService.TabIndex = 2;
             this.btnEditService.Text = "Sửa";
             this.btnEditService.UseVisualStyleBackColor = true;
+            this.btnEditService.Click += new System.EventHandler(this.btnEditService_Click);
             // 
             // btnDeleteService
             // 
@@ -324,6 +329,7 @@
             this.btnDeleteService.TabIndex = 1;
             this.btnDeleteService.Text = "Xóa";
             this.btnDeleteService.UseVisualStyleBackColor = true;
+            this.btnDeleteService.Click += new System.EventHandler(this.btnDeleteService_Click);
             // 
             // btnAddService
             // 
@@ -333,6 +339,7 @@
             this.btnAddService.TabIndex = 0;
             this.btnAddService.Text = "Thêm";
             this.btnAddService.UseVisualStyleBackColor = true;
+            this.btnAddService.Click += new System.EventHandler(this.btnAddService_Click);
             // 
             // panel6
             // 
@@ -492,6 +499,7 @@
             this.btnShowCategory.TabIndex = 3;
             this.btnShowCategory.Text = "Xem";
             this.btnShowCategory.UseVisualStyleBackColor = true;
+            this.btnShowCategory.Click += new System.EventHandler(this.btnShowCategory_Click);
             // 
             // btnEditCategory
             // 
@@ -501,6 +509,7 @@
             this.btnEditCategory.TabIndex = 2;
             this.btnEditCategory.Text = "Sửa";
             this.btnEditCategory.UseVisualStyleBackColor = true;
+            this.btnEditCategory.Click += new System.EventHandler(this.btnEditCategory_Click);
             // 
             // btnDeleteCategory
             // 
@@ -510,6 +519,7 @@
             this.btnDeleteCategory.TabIndex = 1;
             this.btnDeleteCategory.Text = "Xóa";
             this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
             // 
             // btnAddCategory
             // 
@@ -519,6 +529,7 @@
             this.btnAddCategory.TabIndex = 0;
             this.btnAddCategory.Text = "Thêm";
             this.btnAddCategory.UseVisualStyleBackColor = true;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
             // panel15
             // 
@@ -532,12 +543,24 @@
             // 
             // panel23
             // 
+            this.panel23.Controls.Add(this.nudCategoryPrice);
             this.panel23.Controls.Add(this.lblRoomPrice);
-            this.panel23.Controls.Add(this.txbRoomPrice);
             this.panel23.Location = new System.Drawing.Point(4, 117);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(310, 51);
             this.panel23.TabIndex = 3;
+            // 
+            // nudCategoryPrice
+            // 
+            this.nudCategoryPrice.Location = new System.Drawing.Point(121, 18);
+            this.nudCategoryPrice.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.nudCategoryPrice.Name = "nudCategoryPrice";
+            this.nudCategoryPrice.Size = new System.Drawing.Size(185, 20);
+            this.nudCategoryPrice.TabIndex = 3;
             // 
             // lblRoomPrice
             // 
@@ -547,13 +570,6 @@
             this.lblRoomPrice.Size = new System.Drawing.Size(23, 13);
             this.lblRoomPrice.TabIndex = 2;
             this.lblRoomPrice.Text = "Giá";
-            // 
-            // txbRoomPrice
-            // 
-            this.txbRoomPrice.Location = new System.Drawing.Point(121, 15);
-            this.txbRoomPrice.Name = "txbRoomPrice";
-            this.txbRoomPrice.Size = new System.Drawing.Size(186, 20);
-            this.txbRoomPrice.TabIndex = 1;
             // 
             // panel18
             // 
@@ -616,6 +632,7 @@
             // 
             // dgvCategory
             // 
+            this.dgvCategory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategory.Location = new System.Drawing.Point(3, 3);
             this.dgvCategory.Name = "dgvCategory";
@@ -894,7 +911,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnShowAccount);
-            this.panel1.Controls.Add(this.btnEditAccount);
             this.panel1.Controls.Add(this.btnDeleteAccount);
             this.panel1.Controls.Add(this.btnAddAccount);
             this.panel1.Location = new System.Drawing.Point(6, 6);
@@ -910,24 +926,17 @@
             this.btnShowAccount.TabIndex = 3;
             this.btnShowAccount.Text = "Xem";
             this.btnShowAccount.UseVisualStyleBackColor = true;
-            // 
-            // btnEditAccount
-            // 
-            this.btnEditAccount.Location = new System.Drawing.Point(240, 3);
-            this.btnEditAccount.Name = "btnEditAccount";
-            this.btnEditAccount.Size = new System.Drawing.Size(75, 45);
-            this.btnEditAccount.TabIndex = 2;
-            this.btnEditAccount.Text = "Sửa";
-            this.btnEditAccount.UseVisualStyleBackColor = true;
+            this.btnShowAccount.Click += new System.EventHandler(this.btnShowAccount_Click);
             // 
             // btnDeleteAccount
             // 
-            this.btnDeleteAccount.Location = new System.Drawing.Point(118, 3);
+            this.btnDeleteAccount.Location = new System.Drawing.Point(179, 3);
             this.btnDeleteAccount.Name = "btnDeleteAccount";
             this.btnDeleteAccount.Size = new System.Drawing.Size(75, 45);
             this.btnDeleteAccount.TabIndex = 1;
             this.btnDeleteAccount.Text = "Xóa";
             this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
             // 
             // btnAddAccount
             // 
@@ -937,9 +946,11 @@
             this.btnAddAccount.TabIndex = 0;
             this.btnAddAccount.Text = "Thêm";
             this.btnAddAccount.UseVisualStyleBackColor = true;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel26);
             this.panel2.Controls.Add(this.btnResetPassword);
             this.panel2.Controls.Add(this.panel28);
             this.panel2.Controls.Add(this.panel29);
@@ -951,7 +962,7 @@
             // 
             // btnResetPassword
             // 
-            this.btnResetPassword.Location = new System.Drawing.Point(238, 174);
+            this.btnResetPassword.Location = new System.Drawing.Point(241, 231);
             this.btnResetPassword.Name = "btnResetPassword";
             this.btnResetPassword.Size = new System.Drawing.Size(75, 50);
             this.btnResetPassword.TabIndex = 6;
@@ -962,7 +973,7 @@
             // 
             this.panel28.Controls.Add(this.cbAccountType);
             this.panel28.Controls.Add(this.lblAccountType);
-            this.panel28.Location = new System.Drawing.Point(3, 117);
+            this.panel28.Location = new System.Drawing.Point(6, 174);
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(310, 51);
             this.panel28.TabIndex = 3;
@@ -988,7 +999,7 @@
             // 
             this.panel29.Controls.Add(this.lblDisplayedName);
             this.panel29.Controls.Add(this.txbDisplayedName);
-            this.panel29.Location = new System.Drawing.Point(3, 60);
+            this.panel29.Location = new System.Drawing.Point(6, 117);
             this.panel29.Name = "panel29";
             this.panel29.Size = new System.Drawing.Size(310, 51);
             this.panel29.TabIndex = 2;
@@ -1013,7 +1024,7 @@
             // 
             this.panel30.Controls.Add(this.lblUsername);
             this.panel30.Controls.Add(this.txbUsername);
-            this.panel30.Location = new System.Drawing.Point(4, 3);
+            this.panel30.Location = new System.Drawing.Point(7, 60);
             this.panel30.Name = "panel30";
             this.panel30.Size = new System.Drawing.Size(310, 51);
             this.panel30.TabIndex = 1;
@@ -1031,7 +1042,6 @@
             // 
             this.txbUsername.Location = new System.Drawing.Point(121, 15);
             this.txbUsername.Name = "txbUsername";
-            this.txbUsername.ReadOnly = true;
             this.txbUsername.Size = new System.Drawing.Size(186, 20);
             this.txbUsername.TabIndex = 1;
             // 
@@ -1045,11 +1055,38 @@
             // 
             // dgvAccount
             // 
+            this.dgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAccount.Location = new System.Drawing.Point(3, 3);
             this.dgvAccount.Name = "dgvAccount";
             this.dgvAccount.Size = new System.Drawing.Size(427, 325);
             this.dgvAccount.TabIndex = 0;
+            // 
+            // panel26
+            // 
+            this.panel26.Controls.Add(this.lblAccountID);
+            this.panel26.Controls.Add(this.txbAccountID);
+            this.panel26.Location = new System.Drawing.Point(6, 3);
+            this.panel26.Name = "panel26";
+            this.panel26.Size = new System.Drawing.Size(310, 51);
+            this.panel26.TabIndex = 7;
+            // 
+            // lblAccountID
+            // 
+            this.lblAccountID.AutoSize = true;
+            this.lblAccountID.Location = new System.Drawing.Point(3, 18);
+            this.lblAccountID.Name = "lblAccountID";
+            this.lblAccountID.Size = new System.Drawing.Size(18, 13);
+            this.lblAccountID.TabIndex = 2;
+            this.lblAccountID.Text = "ID";
+            // 
+            // txbAccountID
+            // 
+            this.txbAccountID.Location = new System.Drawing.Point(121, 15);
+            this.txbAccountID.Name = "txbAccountID";
+            this.txbAccountID.ReadOnly = true;
+            this.txbAccountID.Size = new System.Drawing.Size(186, 20);
+            this.txbAccountID.TabIndex = 1;
             // 
             // fAdmin
             // 
@@ -1087,6 +1124,7 @@
             this.panel15.ResumeLayout(false);
             this.panel23.ResumeLayout(false);
             this.panel23.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCategoryPrice)).EndInit();
             this.panel18.ResumeLayout(false);
             this.panel18.PerformLayout();
             this.panel19.ResumeLayout(false);
@@ -1123,6 +1161,8 @@
             this.panel30.PerformLayout();
             this.panel31.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).EndInit();
+            this.panel26.ResumeLayout(false);
+            this.panel26.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1169,7 +1209,6 @@
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Label lblRoomPrice;
-        private System.Windows.Forms.TextBox txbRoomPrice;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.Label lblCategoryName;
         private System.Windows.Forms.TextBox txbCategoryName;
@@ -1203,7 +1242,6 @@
         private System.Windows.Forms.DataGridView dgvRoom;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnShowAccount;
-        private System.Windows.Forms.Button btnEditAccount;
         private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.Button btnAddAccount;
         private System.Windows.Forms.Panel panel2;
@@ -1225,5 +1263,9 @@
         private System.Windows.Forms.Label lblRoomDetail;
         private System.Windows.Forms.Panel pAccountDetail;
         private System.Windows.Forms.Label lblAccountDetail;
+        private System.Windows.Forms.NumericUpDown nudCategoryPrice;
+        private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.Label lblAccountID;
+        private System.Windows.Forms.TextBox txbAccountID;
     }
 }

@@ -50,5 +50,45 @@ namespace Hotel.DAO
             return listService;
         }
 
+        public bool InsertService(string name, double price)
+        {
+            string query = "exec USP_InsertService @name , @price ";
+            int result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { name, price });
+            return result > 0;
+        }
+
+        public bool UpdateService(int id, string name, double price)
+        {
+            string query = "exec USP_UpdateServiceByID @id , @name , @price ";
+            int result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { id, name, price });
+            return result > 0;
+        }
+
+        //public bool DeleteService(int id)
+        //{
+        //    string query = "exec USP_DeleteServiceByID @id";
+        //    int result = 0;
+
+        //    if ()
+        //    {
+        //        BillInfoDAO.Instace.DeleteBillInfoByServiceID(id);
+        //        result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { id });
+        //    }
+        //    else
+        //    {
+        //        result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { id });
+        //    }
+
+        //    return result > 0;
+        //}
+
+        public bool DeleteService(int id)
+        {
+            BillInfoDAO.Instace.DeleteBillInfoByServiceID(id);
+
+            string query = "exec USP_DeleteServiceByID @id";
+            int result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { id });
+            return result > 0;
+        }
     }
 }

@@ -35,12 +35,11 @@ GO
 
 
 CREATE TABLE Accounts (
+	id int identity Primary KEY,
     username nvarchar(255) NOT NULL UNIQUE,
 	displayed nvarchar(255) NOT NULL  DEFAULT N'Người dùng',
 	password nvarchar(255) NOT NULL DEFAULT N'123456',
-	type int  NOT NULL DEFAULT 0 
-
-    PRIMARY KEY (username),
+	type int  NOT NULL DEFAULT 0 CHECK ( type in (0, 1))
 );
 GO
 
@@ -90,6 +89,10 @@ INSERT INTO Accounts
 VALUES (N'staff', N'staff', N'123456', 0); 
 GO
 
+INSERT INTO Accounts
+VALUES (N'assistant', N'assistant', N'123456', 0); 
+GO
+select * from Accounts
 --Nhập danh sách ROOMS - PHÒNG vào cơ sở dữ liệu
 declare @i int = 0
 while @i <= 10
@@ -286,11 +289,43 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE USP_DeleteBillInfoByServiceID 
+@id int
+AS
+BEGIN
+	delete BillInfo where service_id = @id
+END
+GO
+
 CREATE PROCEDURE USP_DeleteRoomByID 
 @id int
 AS
 BEGIN
 	delete Rooms where id = @id
+END
+GO
+
+CREATE PROCEDURE USP_DeleteRoomTypeByID 
+@id int
+AS
+BEGIN
+	delete RoomTypes where id = @id
+END
+GO
+
+CREATE PROCEDURE USP_DeleteRoomByRoomTypeID 
+@id int
+AS
+BEGIN
+	delete Rooms where TypeID = @id
+END
+GO
+
+CREATE PROCEDURE USP_DeleteServiceByID 
+@id int
+AS
+BEGIN
+	delete Service where id = @id
 END
 GO
 
@@ -302,6 +337,14 @@ CREATE PROCEDURE USP_GetService
 AS
 BEGIN
 	SELECT * FROM Service
+END
+GO
+select * from Accounts
+
+CREATE PROCEDURE USP_GetListAccount
+AS
+BEGIN
+	SELECT * FROM Accounts
 END
 GO
 
@@ -375,6 +418,33 @@ BEGIN
 END
 GO
 
+create PROCEDURE USP_InsertService
+@name nvarchar(255), @price int
+as
+BEGIN
+	insert Service(name, price)
+	values (@name, @price)
+END
+GO
+
+create PROCEDURE USP_InsertRoomType
+@name nvarchar(255), @price int
+as
+BEGIN
+	insert RoomTypes(name, price)
+	values (@name, @price)
+END
+GO
+
+create PROCEDURE USP_InsertAccount
+@username nvarchar(255), @pass nvarchar(255), @displayName nvarchar(255), @type int
+as
+BEGIN
+	insert Accounts(username, displayed, password, type)
+	values (@username, @displayName, @pass, @type)
+END
+GO
+
 create proc USP_UpdateAccount
 @username nvarchar(255), @displayedName nvarchar(255), @password nvarchar(255), @newPassword nvarchar(255)
 as
@@ -410,6 +480,22 @@ BEGIN
 END
 GO
 
+create PROCEDURE USP_UpdateServiceByID
+@id int, @name nvarchar(255), @price int
+as
+BEGIN
+	update Service set name = @name, price = @price where id = @id
+END
+GO
+
+create PROCEDURE USP_UpdateRoomTypeByID
+@id int, @name nvarchar(255), @price int
+as
+BEGIN
+	update RoomTypes set Name = @name, Price = @price where ID = @id
+END
+GO
+
 create PROCEDURE USP_InsertRoom
 @name nvarchar(255), @type int, @des nvarchar(255), @status int
 as
@@ -424,6 +510,14 @@ create PROCEDURE USP_UpdateRoom
 as
 BEGIN
 	update Rooms set Name = @name, TypeID = @type, Description =  @des, Status =  @status where ID = @id
+END
+GO
+
+create PROCEDURE USP_DeleteAccountByUsername
+@name nvarchar(255)
+as
+BEGIN
+	delete Accounts where username = @name
 END
 GO
 
@@ -574,12 +668,14 @@ delete BillInfo
 DBCC CHECKIDENT('BillInfo', RESEED, 0)
 go
 
+exec USP_GetRoomTypes
+
 update Rooms
 set Status = 0
 where id =2
 go
 
-create trigger UTG_DeleteBillInfo
+alter trigger UTG_DeleteBillInfo
 on BillInfo for delete
 as
 begin
@@ -595,9 +691,12 @@ begin
 
 	if (@count = 0)
 	begin
-		update Rooms set Status = N'Trống' where id = @idRoom
+		update Rooms set Status = 0 where id = @idRoom
 	end
 end
 go
 
 select * from Rooms
+go
+
+DROP TABLE Accounts 

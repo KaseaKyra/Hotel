@@ -50,5 +50,35 @@ namespace Hotel.DAO
 
             return result > 0;
         }
+
+        public List<Account> GetListAccount()
+        {
+            List<Account> listAccount = new List<Account>();
+            string query = "exec USP_GetListAccount";
+
+            DataTable data = DataProvider.Instace.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Account account = new Account(item);
+                listAccount.Add(account);
+            }
+
+            return listAccount;
+        }
+
+        public bool InsertAccount(string username, string pass, string displayName, int type = 0)
+        {
+            string query = "exec USP_InsertAccount @username , @pass , @displayName , @type ";
+            int result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { username, pass, displayName, type });
+            return result > 0;
+        }
+
+        public bool DeleteAccount(int id)
+        {
+            string query = "exec USP_DeleteAccountByID @id ";
+            int result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { id });
+            return result > 0;
+        }
     }
 }

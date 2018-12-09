@@ -44,5 +44,18 @@ namespace Hotel.DAO
             string query = "exec USP_DeleteBillInfoByBillID @id";
             DataProvider.Instace.ExecuteNonQuery(query, new object[] { id });
         }
+
+        //public bool DeleteBillInfoByServiceID(int id)
+        //{
+        //    string query = "exec USP_DeleteBillInfoByServiceID @id";
+        //    int result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { id });
+        //    return result > 1;
+        //}
+
+        public void DeleteBillInfoByServiceID(int id)
+        {
+            string query = "exec USP_DeleteBillInfoByServiceID @id";
+            int result = DataProvider.Instace.ExecuteNonQuery(query, new object[] { id });
+        }
     }
 }

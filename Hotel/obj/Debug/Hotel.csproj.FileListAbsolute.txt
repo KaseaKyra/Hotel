@@ -11,3 +11,16 @@ F:\Hotel\Hotel\obj\Debug\Hotel.pdb
 F:\Hotel\Hotel\obj\Debug\Hotel.fRoomManager.resources
 F:\Hotel\Hotel\obj\Debug\Hotel.fAccountProfile.resources
 F:\Hotel\Hotel\obj\Debug\Hotel.fAdmin.resources
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\bin\Debug\Hotel.exe.config
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\bin\Debug\Hotel.exe
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\bin\Debug\Hotel.pdb
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\obj\Debug\Hotel.csprojAssemblyReference.cache
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\obj\Debug\Hotel.fAccountProfile.resources
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\obj\Debug\Hotel.fAdmin.resources
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\obj\Debug\Hotel.fLogin.resources
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\obj\Debug\Hotel.fRoomManager.resources
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\obj\Debug\Hotel.Properties.Resources.resources
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\obj\Debug\Hotel.csproj.GenerateResource.cache
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\obj\Debug\Hotel.csproj.CoreCompileInputs.cache
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\obj\Debug\Hotel.exe
+F:\github\Learn-how-to-use-Bootstrap\Hotel\Hotel\obj\Debug\Hotel.pdb

@@ -31,6 +31,11 @@ namespace Hotel
 
             this.LoginAccount = acc;
 
+            LoadRoomManager();
+        }
+
+        void LoadRoomManager()
+        {
             loadRoom();
             loadRoomTypeName();
             loadServices();
@@ -171,7 +176,113 @@ namespace Hotel
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fAdmin f = new fAdmin();
+
+            f.InsertRoom += f_InsertRoom;
+            f.UpdateRoom += f_UpdateRoom;
+            f.DeleteRoom += f_DeleteRoom;
+
+            f.InsertService += f_InsertService;
+            f.UpdateService += f_UpdateService;
+            f.DeleteService += f_DeleteService;
+
+            f.InsertRoomType += f_InsertRoomType;
+            f.UpdateRoomType += f_UpdateRoomType;
+            f.DeleteRoomType += f_DeleteRoomType;
+
             f.ShowDialog();
+        }
+
+        void f_DeleteRoomType(object sender, EventArgs e)
+        {
+            loadRoomTypeName();
+            loadServices();
+            if (lvBill.Tag != null)
+            {
+                showBill((lvBill.Tag as Room).Id);
+            }
+            loadRoom();
+        }
+
+        void f_UpdateRoomType(object sender, EventArgs e)
+        {
+            loadRoomTypeName();
+            loadServices();
+            if (lvBill.Tag != null)
+            {
+                showBill((lvBill.Tag as Room).Id);
+            }
+        }
+
+        void f_InsertRoomType(object sender, EventArgs e)
+        {
+            loadRoomTypeName();
+            loadServices();
+            if (lvBill.Tag != null)
+            {
+                showBill((lvBill.Tag as Room).Id);
+            }
+        }
+
+        void f_DeleteService(object sender, EventArgs e)
+        {
+            loadRoomTypeName();
+            loadServices();
+            if (lvBill.Tag != null)
+            {
+                showBill((lvBill.Tag as Room).Id);
+            }
+            loadRoom();
+        }
+
+        void f_UpdateService(object sender, EventArgs e)
+        {
+            loadRoomTypeName();
+            loadServices();
+            if (lvBill.Tag != null)
+            {
+                showBill((lvBill.Tag as Room).Id);
+            }
+        }
+
+        void f_InsertService(object sender, EventArgs e)
+        {
+            loadRoomTypeName();
+            loadServices();
+            if (lvBill.Tag != null)
+            {
+                showBill((lvBill.Tag as Room).Id);
+            }
+        }
+
+        void f_DeleteRoom(object sender, EventArgs e)
+        {
+            loadRoomTypeName();
+            loadServices();
+            if (lvBill.Tag != null)
+            {
+                showBill((lvBill.Tag as Room).Id);
+            }
+            loadRoom();
+        }
+
+        void f_UpdateRoom(object sender, EventArgs e)
+        {
+            loadRoomTypeName();
+            loadServices();
+            if (lvBill.Tag != null)
+            {
+                showBill((lvBill.Tag as Room).Id);
+            }
+        }
+
+        void f_InsertRoom(object sender, EventArgs e)
+        {
+            loadRoomTypeName();
+            loadServices();
+            if (lvBill.Tag != null)
+            {
+                showBill((lvBill.Tag as Room).Id);
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
